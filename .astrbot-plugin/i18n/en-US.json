@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "display_name": "Exact Match",
+    "short_desc": "Reply only on an exact trigger match; group trigger configurable",
+    "desc": "Replies only when a message exactly matches a trigger, avoiding substring false triggers. Supports multiple trigger-and-reply rules, each of which can require a bot mention in group chats."
+  },
+  "config": {
+    "rules": {
+      "description": "Exact match rules",
+      "hint": "Each rule is a trigger-and-reply group. The reply is sent only when the message exactly matches the trigger; for example, “hello” does not match “hello there”.",
+      "templates": {
+        "exact_rule": {
+          "name": "Match rule",
+          "hint": "Sends the reply when the trigger matches exactly.",
+          "trigger": {
+            "description": "Trigger",
+            "hint": "Message text that must match exactly, without the wake prefix. Leading and trailing spaces are ignored; matching is case-sensitive."
+          },
+          "bot_id": {
+            "description": "Bot (ID)",
+            "hint": "Enter the Bot ID shown in the platform settings. The bot account ID also works. Leave empty to apply to all bots."
+          },
+          "require_wake": {
+            "description": "Require bot trigger",
+            "hint": "Enabled by default. When enabled, this rule only matches in group chats when the bot is mentioned or the wake prefix is used. When disabled, sending the trigger directly in a group also replies. Private chats are unaffected."
+          },
+          "response": {
+            "description": "Reply",
+            "hint": "Sent directly on a match without calling the model; line breaks are supported."
+          }
+        }
+      }
+    }
+  }
+}

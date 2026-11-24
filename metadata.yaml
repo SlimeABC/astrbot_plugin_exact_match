@@ -1,5 +1,14 @@
 name: astrbot_plugin_exact_match
+display_name: 精确匹配
+desc: 消息内容与触发词完全一致时才回复，避免子串误触；支持多组“触发词 + 回复”规则，每条规则可设置群聊是否需要 @机器人 才响应。
+short_desc: 触发词完全一致才回复，群聊触发可配置
+version: "1.0.1"
 author: Slime
-desc: 精确匹配回复插件 - 完全匹配触发
-version: 1.0.0
-repo: https://github.com/SlimeABC/strbot_plugin_exact_match
+repo: https://github.com/SlimeABC/astrbot_plugin_exact_match
+astrbot_version: ">=4.10.4"
+category: 工具
+tags:
+  - 精确匹配
+  - 自动回复
+  - 关键词
+  - 触发词

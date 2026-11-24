@@ -1,20 +1,50 @@
 {
-  "triggers": {
-    "description": "触发词列表（不含唤醒词）",
-    "type": "list",
-    "items": {
-      "type": "string"
+  "rules": {
+    "description": "精确匹配规则",
+    "hint": "每条规则是一组“触发词 → 回复”。消息内容与触发词完全一致时才会回复，例如配置“你好”不会回复“你好啊”。",
+    "type": "template_list",
+    "templates": {
+      "exact_rule": {
+        "name": "匹配规则",
+        "hint": "触发词完全一致时发送对应回复。",
+        "display_item": "trigger",
+        "hide_hint_in_list": true,
+        "items": {
+          "trigger": {
+            "description": "触发词",
+            "hint": "需要完全匹配的消息内容，不含唤醒词；首尾空格会被忽略，区分大小写。",
+            "type": "string",
+            "default": ""
+          },
+          "bot_id": {
+            "description": "指定机器人（Bot ID）",
+            "hint": "填写平台设置里的 Bot ID，也可填写机器人账号 ID；留空表示对所有机器人生效。",
+            "type": "string",
+            "default": ""
+          },
+          "require_wake": {
+            "description": "需要触发机器人",
+            "hint": "默认开启。开启后这条规则在群聊中需要 @机器人 或使用唤醒词才会匹配；关闭后群聊直接发送触发词也会回复。私聊不受影响。",
+            "type": "bool",
+            "default": true
+          },
+          "response": {
+            "description": "回复内容",
+            "hint": "匹配成功后直接发送，不会调用模型；支持换行。",
+            "type": "text",
+            "default": ""
+          }
+        }
+      }
     },
-    "default": ["你好", "帮助"],
-    "hint": "每行一个触发词，如：你好"
-  },
-  "responses": {
-    "description": "回复内容列表（与上面一一对应）",
-    "type": "list",
-    "items": {
-      "type": "string"
-    },
-    "default": ["你好呀！", "这是精确匹配插件"],
-    "hint": "每行一个回复，顺序与触发词对应"
+    "default": [
+      {
+        "__template_key": "exact_rule",
+        "trigger": "test",
+        "bot_id": "",
+        "require_wake": true,
+        "response": "pass"
+      }
+    ]
   }
 }
